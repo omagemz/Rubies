@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getTransactions, addTransaction, updateTransaction, deleteTransaction } from "../services/api";
+import { getTransactions, addTransaction, updateTransaction, deleteTransaction } from "../services/api.js";
 
 // Fetch all transactions
 export const fetchTransactions = createAsyncThunk(
