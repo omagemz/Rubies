@@ -60,19 +60,28 @@ const Dashboard = () => {
     const total = transactions.reduce((acc, t) => acc + t.amount, 0);
 
     return (
-        <div className="container mt-3">
-            <h2 className="text-center fs-4">Rubies Expense Tracker</h2>
-            <h4 className={`text-center fs-5 balance ${total < 0 ? 'text-danger' : 'text-success'}`}>Balance: {total} OMR</h4>
-            <div className="text-center mb-3">
-                <button className="btn btn-primary w-100" onClick={toggleModal}>Add Transaction</button>
+        <div className="container">
+            <div className="text-center mb-4">
+                <h1 className="fs-3 fw-bold mb-3">💎 Rubies Expense Tracker</h1>
+                <div className={`balance ${total < 0 ? 'text-danger' : 'text-success'}`}>
+                    Balance: {total.toFixed(2)} OMR
+                </div>
             </div>
-            <div className="table-responsive">
+            
+            <div className="mb-4">
+                <button className="btn btn-primary w-100" onClick={toggleModal}>
+                    ➕ Add Transaction
+                </button>
+            </div>
+            
+            <div className="mb-4">
                 <TransactionTable
                     transactions={transactions}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                 />
             </div>
+            
             <AddTransactionModal isOpen={modalOpen} toggle={toggleModal} editData={editData} />
             <ConfirmModal
                 isOpen={confirmOpen}
@@ -84,7 +93,8 @@ const Dashboard = () => {
                 confirmText="Delete"
                 cancelText="Cancel"
             />
-            <div className="mt-4" style={{ maxWidth: "100%", overflowX: "auto" }}>
+            
+            <div className="mt-5">
                 <CalendarView transactions={transactions} />
             </div>
         </div>
